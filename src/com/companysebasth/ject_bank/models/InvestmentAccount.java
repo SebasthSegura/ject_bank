@@ -4,6 +4,7 @@ public class InvestmentAccount extends Account{
     private double investmentAmount;
     private String investmentType;
     private String riskLevel;
+    private double interestRate;
 
     // Create a constructor for InvestmentAccount
     public InvestmentAccount(String accountNumber, String accountType, double balance, String currency, String ownerName, String ownerLastName, Long ownerIdUser, String ownerEmail, int ownerPhoneNumber, String creationDate, String lastTransactionDate, String status, double investmentAmount, String investmentType, String riskLevel) {
@@ -11,6 +12,14 @@ public class InvestmentAccount extends Account{
         this.investmentAmount = investmentAmount;
         this.investmentType = investmentType;
         this.riskLevel = riskLevel;
+    }
+
+    // Create a default constructor for InvestmentAccount
+    public InvestmentAccount(double interestRate, double investmentAmount, String investmentType) {
+        this.investmentAmount = this.investmentAmount;
+        this.investmentType = investmentType;
+        this.riskLevel = riskLevel;
+        this.interestRate = this.interestRate;
     }
 
     // Create getters and setters for InvestmentAccount attributes

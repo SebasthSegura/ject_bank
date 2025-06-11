@@ -11,7 +11,7 @@ public class Person {
     private List<InvestmentAccount> investmentAccounts;
     private List<SavingAccount> savingAccounts;
 
-    //create a constructor generic for Person
+    //creat  e a constructor generic for Person
     public Person(String name, String lastName, Long idUser, String email, int phoneNumber, List<InvestmentAccount> investmentAccounts, List<SavingAccount> savingAccounts){
         this.name = name;
         this.lastName = lastName;
