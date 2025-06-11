@@ -78,4 +78,16 @@ public class Person {
     public void setSavingAccounts(List<SavingAccount> savingAccounts) {
         this.savingAccounts = savingAccounts;
     }
+
+
+    //override the toString method to return a string with all the attributes
+    @Override
+    public String toString() {
+        return "Usuario = " + name + " " + lastName
+                + ", Identificacion del usuario = " + idUser + " "
+                + "Email = " + email + " "
+                + "Telefono = " + phoneNumber + " "
+                + "Cuentas de Inversion = " + investmentAccounts + " "
+                + "Cuentas de Ahorro = " + savingAccounts;
+    }
 }
