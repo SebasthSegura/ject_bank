@@ -7,12 +7,12 @@ public class Person {
     private String lastName;
     private Long idUser;
     private String email;
-    private int phoneNumber;
+    private Long phoneNumber;
     private List<InvestmentAccount> investmentAccounts;
     private List<SavingAccount> savingAccounts;
 
     //creat  e a constructor generic for Person
-    public Person(String name, String lastName, Long idUser, String email, int phoneNumber, List<InvestmentAccount> investmentAccounts, List<SavingAccount> savingAccounts){
+    public Person(String name, String lastName, Long idUser, String email, Long phoneNumber, List<InvestmentAccount> investmentAccounts, List<SavingAccount> savingAccounts){
         this.name = name;
         this.lastName = lastName;
         this.idUser = idUser;
@@ -55,11 +55,11 @@ public class Person {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
