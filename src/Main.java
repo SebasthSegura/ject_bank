@@ -31,6 +31,8 @@ public class Main {
 
         switch (responseInt){
             case 1:
+                System.out.println("*****************************************************");
+                // Option to register
                 System.out.println("Ha seleccionado la opción de registrarse.");
                 System.out.println("Por favor, ingrese su nombre:");
                 String name = in.nextLine();
@@ -119,6 +121,8 @@ public class Main {
                 } while (opcion != 3);
                 break;
             case 2:
+                System.out.println("*****************************************************");
+                // Option to login
                 System.out.println("Ha seleccionado la opción de iniciar sesión.");
                 System.out.println("Por favor, ingrese su correo electrónico:");
                 in.nextLine(); // Consume the newline character
@@ -131,6 +135,8 @@ public class Main {
                 System.out.println("¡Inicio de sesión exitoso! Bienvenido de nuevo.");
                 break;
             case 3:
+                System.out.println("*****************************************************");
+                // Option to login as an employee
                 System.out.println("Ha seleccionado la opción de iniciar sesión como empleado.");
                 System.out.println("Por favor, ingrese su ID de empleado:");
                 Long employeeId = in.nextLong();
@@ -143,6 +149,8 @@ public class Main {
                 System.out.println("¡Inicio de sesión como empleado exitoso! Bienvenido.");
                 break;
             case 4:
+                System.out.println("*****************************************************");
+                // Options to register an employee
                 System.out.println("Ha seleccionado la opción de registrar un empleado.");
                 System.out.println("Por favor, ingrese el nombre del empleado:");
                 String employeeName = in.nextLine();
@@ -159,6 +167,77 @@ public class Main {
 
                 System.out.println("Por favor, ingrese el número de teléfono del empleado:");
                 Long employeePhoneNumber = in.nextLong();
+
+                System.out.println("""
+                        Elija el cargo del empleado:
+                        1. Supervisor
+                        2. Cajero
+                        3. Recepcionista
+                        """);
+                int positionChoice = in.nextInt();
+                if (positionChoice == 1) {
+
+                    System.out.println("Nombre del empleado: ");
+                    String supervisorName = in.nextLine();
+
+                    System.out.println("Apellido del empleado: ");
+                    String supervisorLastName = in.nextLine();
+
+                    System.out.println("ID del empleado: ");
+                    Long supervisorId = in.nextLong();
+
+                    System.out.println("Correo electrónico del empleado:");
+                    in.nextLine(); // Consume the newline character
+                    String supervisorEmail = in.nextLine();
+
+                    System.out.println("Número de teléfono del empleado:");
+                    int supervisorPhoneNumber = in.nextInt();
+                    String position = in.nextLine();
+
+                    System.out.println("por favor, ingrese la fecha de contratación del empleado (formato: dd/mm/yyyy):");
+                    in.nextLine(); // Consume the newline character
+
+                    String hireDate = in.nextLine();
+                    System.out.println("por favor, ingrese el salario del empleado:");
+                    double salary = in.nextDouble();
+
+                    System.out.println("por favor, ingrese el departamento del empleado:");
+                    in.nextLine(); // Consume the newline character
+                    String department = in.nextLine();
+
+                    System.out.println("por favor, ingrese la ubicación de la oficina del empleado:");
+                    String officeLocation = in.nextLine();
+                    Supervisor supervisor = new Supervisor(
+                            supervisorName,
+                            supervisorLastName,
+                            supervisorId,
+                            supervisorEmail,
+                            supervisorPhoneNumber,
+                            position,
+                            hireDate,
+                            salary,
+                            department,
+                            officeLocation
+                    );
+                    System.out.println("¡Supervisor registrado exitosamente!");
+                    System.out.println("Nombre: " + supervisor.getName());
+                    System.out.println("Apellido: " + supervisor.getLastName());
+                    System.out.println("ID: " + supervisor.getIdEmployed());
+                    System.out.println("Correo electrónico: " + supervisor.getEmail());
+                    System.out.println("Número de teléfono: " + supervisor.getPhoneNumber());
+                    System.out.println("Cargo: " + supervisor.getPosition());
+                    System.out.println("Fecha de contratación: " + supervisor.getHireDate());
+                    System.out.println("Salario: " + supervisor.getSalary());
+
+
+                } else if (positionChoice == 2) {
+
+                } else if (positionChoice == 3) {
+
+                }else {
+                    System.out.println("Opción no válida. Por favor, intente nuevamente.");
+                    return;
+                }
 
                 // Aquí podrías agregar lógica para guardar los datos del nuevo empleado
                 System.out.println("¡Empleado registrado exitosamente!");
