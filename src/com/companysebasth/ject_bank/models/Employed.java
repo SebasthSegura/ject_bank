@@ -90,4 +90,14 @@ public class Employed {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+    //create method to employed update contact information
+    public void updateContacInformation(String newEmail, int newPhoneNumber){
+        this.email = newEmail;
+        this.phoneNumber = newPhoneNumber;
+    }
+
+    public void updateContacInformation(String newEmail, int newPhoneNumber, String shift) {
+
+    }
 }

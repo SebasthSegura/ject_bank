@@ -31,4 +31,11 @@ public class Cashier extends Employed {
     public void setShift(String shift) {
         this.shift = shift;
     }
+
+    @Override
+    public void updateContacInformation(String newEmail, int newPhoneNumber, String shift) {
+        setEmail(newEmail);
+        setPhoneNumber(newPhoneNumber);
+        setShift(shift);
+    }
 }

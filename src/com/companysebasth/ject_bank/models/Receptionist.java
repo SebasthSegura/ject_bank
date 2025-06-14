@@ -11,11 +11,11 @@ public class Receptionist extends Employed{
         this.assignedBranch = assignedBranch;
     }
 
-    // Default constructor
+    // create a default constructor for Receptionist
     public Receptionist() {
     }
 
-    // Getters and Setters
+    // create Getters and Setters for all attributes
     public String getShift() {
         return shift;
     }

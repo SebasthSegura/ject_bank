@@ -129,4 +129,24 @@ public class Account {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    //create a method to display account information
+    public void depositAccount(double amount){
+        if (amount < 500){
+            System.out.println("El minimo monto de deposito es de 500");
+        }if (amount > 500){
+            this.balance += amount;
+            System.out.println("Deposito exitoso. Nuevo saldo: " + this.balance);
+        }else {
+            System.out.println("Monto de deposito invalido");
+        }
+    }
+    public void withdrawAccount(double amount){
+        if (amount > this.balance){
+            System.out.println("Saldo insuficiente");
+        }else {
+            this.balance -= amount;
+            System.out.println("Retiro exitoso. Nuevo saldo: " + this.balance);
+        }
+    }
 }
