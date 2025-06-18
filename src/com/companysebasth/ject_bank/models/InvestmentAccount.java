@@ -47,4 +47,23 @@ public class InvestmentAccount extends Account{
         this.riskLevel = riskLevel;
     }
 
+    //metodo deposit para InvestmentAccount
+    public void deposit(double investmentAmount){
+        if (investmentAmount < 25000){
+            System.out.println("El monto de inversion debe ser igual o mayor $25,000.");
+        } else {
+            setBalance(getBalance() + investmentAmount);
+            System.out.println("Deposito exitoso. nuevo saldo: " + getBalance());
+        }
+    }
+
+    // metodo withdraw para InvestmentAccount
+    public void withdraw(double investmentAmount) {
+        if (investmentAmount > getBalance() && investmentAmount <= 10000) {
+            System.out.println("Fondos insuficientes para retirar " + investmentAmount + ". Saldo actual: " + getBalance());
+        } else {
+            setBalance(getBalance() - investmentAmount);
+            System.out.println("Retiro exitoso. Nuevo saldo: " + getBalance());
+        }
+    }
 }

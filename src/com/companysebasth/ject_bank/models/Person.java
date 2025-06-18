@@ -1,5 +1,6 @@
 package com.companysebasth.ject_bank.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
@@ -10,16 +11,26 @@ public class Person {
     private Long phoneNumber;
     private List<InvestmentAccount> investmentAccounts;
     private List<SavingAccount> savingAccounts;
+    private List<Account> accounts;
 
     //creat  e a constructor generic for Person
-    public Person(String name, String lastName, Long idUser, String email, Long phoneNumber, List<InvestmentAccount> investmentAccounts, List<SavingAccount> savingAccounts){
+    public Person(String name, String lastName, Long idUser, String email, Long phoneNumber, List<Account> accounts) {
         this.name = name;
         this.lastName = lastName;
         this.idUser = idUser;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.investmentAccounts = investmentAccounts;
-        this.savingAccounts = savingAccounts;
+        this.accounts = accounts;
+    }
+
+    //create a default constructor for Person
+    public Person(String name, String lastName, Long idUser, String email, Long phoneNumber) {
+        this.name = name;
+        this.lastName = lastName;
+        this.idUser = idUser;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.accounts = new ArrayList<>();
     }
 
     //create getters and setters for all attributes
@@ -79,6 +90,14 @@ public class Person {
         this.savingAccounts = savingAccounts;
     }
 
+    // Method to add an account to the person's accounts list
+    public void addAccount(Account account) {
+        this.accounts.add(account);
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
 
     //override the toString method to return a string with all the attributes
     @Override

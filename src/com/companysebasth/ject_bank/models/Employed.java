@@ -9,6 +9,7 @@ public class Employed {
     private String position;
     private String hireDate;
     private double salary;
+    private int yearsOfService;
 
     // create a constructor for Employed
     public Employed(String name, String lastName, Long idEmployed, String email, int phoneNumber, String position, String hireDate, double salary) {
@@ -99,5 +100,17 @@ public class Employed {
 
     public void updateContacInformation(String newEmail, int newPhoneNumber, String shift) {
 
+    }
+
+    public static final int MAX_VACATION_DAYS = 30;
+    public static final int INITIAL_VACATION_DAYS = 5;
+    public static final int DAYS_PER_YEAR_INCREASE = 2;
+
+    public int calculateVacationDays() {
+        int calculateDays = INITIAL_VACATION_DAYS;
+        if(yearsOfService >= 1){
+            calculateDays += (yearsOfService - 1) * DAYS_PER_YEAR_INCREASE;
+        }
+        return Math.min(calculateDays, MAX_VACATION_DAYS);
     }
 }

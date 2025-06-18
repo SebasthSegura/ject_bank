@@ -41,4 +41,26 @@ public class SavingAccount extends Account{
     public void setInitialDeposit(double initialDeposit) {
         this.initialDeposit = initialDeposit;
     }
+
+    // Method to deposit money into the saving account
+
+    @Override
+    public void depositAccount(double amount) {
+        if (amount < 1000) {
+            System.out.println("El monto de deposito debe ser igual o mayor a $1,000.");
+        } else {
+            setBalance(getBalance() + amount);
+            System.out.println("Deposito exitoso. Nuevo saldo: " + getBalance());
+        }
+    }
+
+    @Override
+    public void withdrawAccount(double amount) {
+        if (getBalance() < 500 && amount > getBalance()) {
+            System.out.println("Fondos insuficientes para retirar " + amount + ". Saldo actual: " + getBalance());
+        } else {
+            setBalance(getBalance() - amount);
+            System.out.println("Retiro exitoso. Nuevo saldo: " + getBalance());
+        }
+    }
 }
