@@ -5,7 +5,7 @@ public class Cashier extends Employed {
     private String shift;
 
     // Constructor for Cashier
-    public Cashier(String name, String lastName, Long idEmployed, String email, int phoneNumber, String position, String hireDate, double salary, String assignedBranch, String shift) {
+    public Cashier(String name, String lastName, Long idEmployed, String email, Long phoneNumber, String position, String hireDate, double salary, String assignedBranch, String shift) {
         super(name, lastName, idEmployed, email, phoneNumber, position, hireDate, salary);
         this.assignedBranch = assignedBranch;
         this.shift = shift;
@@ -33,7 +33,7 @@ public class Cashier extends Employed {
     }
 
     @Override
-    public void updateContacInformation(String newEmail, int newPhoneNumber, String shift) {
+    public void updateContacInformation(String newEmail, Long newPhoneNumber, String shift) {
         setEmail(newEmail);
         setPhoneNumber(newPhoneNumber);
         setShift(shift);

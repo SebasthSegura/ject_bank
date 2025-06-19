@@ -5,14 +5,14 @@ public class Employed {
     private String lastName;
     private Long idEmployed;
     private String email;
-    private int phoneNumber;
+    private Long phoneNumber;
     private String position;
     private String hireDate;
     private double salary;
     private int yearsOfService;
 
     // create a constructor for Employed
-    public Employed(String name, String lastName, Long idEmployed, String email, int phoneNumber, String position, String hireDate, double salary) {
+    public Employed(String name, String lastName, Long idEmployed, String email, Long phoneNumber, String position, String hireDate, double salary) {
         this.name = name;
         this.lastName = lastName;
         this.idEmployed = idEmployed;
@@ -60,11 +60,11 @@ public class Employed {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -93,12 +93,12 @@ public class Employed {
     }
 
     //create method to employed update contact information
-    public void updateContacInformation(String newEmail, int newPhoneNumber){
+    public void updateContacInformation(String newEmail, Long newPhoneNumber){
         this.email = newEmail;
         this.phoneNumber = newPhoneNumber;
     }
 
-    public void updateContacInformation(String newEmail, int newPhoneNumber, String shift) {
+    public void updateContacInformation(String newEmail, Long newPhoneNumber, String shift) {
 
     }
 

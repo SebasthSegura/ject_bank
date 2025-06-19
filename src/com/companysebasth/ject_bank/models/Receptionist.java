@@ -5,7 +5,7 @@ public class Receptionist extends Employed{
     private String assignedBranch;
 
     // Constructor for Receptionist
-    public Receptionist(String name, String lastName, Long idEmployed, String email, int phoneNumber, String position, String hireDate, double salary, String shift, String assignedBranch) {
+    public Receptionist(String name, String lastName, Long idEmployed, String email, Long phoneNumber, String position, String hireDate, double salary, String shift, String assignedBranch) {
         super(name, lastName, idEmployed, email, phoneNumber, position, hireDate, salary);
         this.shift = shift;
         this.assignedBranch = assignedBranch;

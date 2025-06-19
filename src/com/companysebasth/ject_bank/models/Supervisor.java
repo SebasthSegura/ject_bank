@@ -5,7 +5,7 @@ public class Supervisor extends Employed {
     private String officeLocation;
 
     // create a constructor for Supervisor
-    public Supervisor(String name, String lastName, Long idEmployed, String email, int phoneNumber, String position, String hireDate, double salary, String department, String officeLocation) {
+    public Supervisor(String name, String lastName, Long idEmployed, String email, Long phoneNumber, String position, String hireDate, double salary, String department, String officeLocation) {
         super(name, lastName, idEmployed, email, phoneNumber, position, hireDate, salary);
         this.department = department;
         this.officeLocation = officeLocation;

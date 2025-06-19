@@ -1,7 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import com.companysebasth.ject_bank.models.*;
 
 public class Main {
+    private static final List<Employed> registeredEmployed = new ArrayList<>();
+    private static final List<Person> registeredUser = new ArrayList<>();
+    private static Scanner in = new Scanner(System.in);
+
+    // Main method to run the application
     public static void main(String[] args) {
 
         int responseInt;
@@ -18,36 +25,41 @@ public class Main {
                 """);
         System.out.println("");
 
-        System.out.println("""
-                Opciones: 
-                1. Registrarse
-                2. Iniciar sesión
-                3. Iniciar sesión como empleado
-                4. registrar empleado
-                5. Salir
-                """);
-        responseInt = in.nextInt();
-        System.out.println("");
+        do {
+            System.out.println("""
+                    Opciones: 
+                    1. Registrarse
+                    2. Iniciar sesión
+                    3. Iniciar sesión como empleado
+                    4. registrar empleado
+                    5. Salir
+                    """);
+            responseInt = in.nextInt();
+            System.out.println("");
 
-        switch (responseInt){
-            case 1:
-                registerPerson();
-                break;
-            case 2:
-                loginPerson();
-                break;
-            case 3:
-                loginEmployed();
-                break;
-            case 4:
-                registerEmployed();
-                break;
-            case 5:
-                System.out.println("Ha seleccionado la opción de salir.");
-                System.out.println("¡Gracias por usar nuestra aplicación bancaria! Hasta luego.");
-                break;
-        }
-        in.close();
+            switch (responseInt) {
+                case 1:
+                    registerPerson();
+                    break;
+                case 2:
+                    loginPerson();
+                    break;
+                case 3:
+                    loginEmployed();
+                    break;
+                case 4:
+                    registerEmployed();
+                    break;
+                case 5:
+                    System.out.println("Ha seleccionado la opción de salir.");
+                    System.out.println("¡Gracias por usar nuestra aplicación bancaria! Hasta luego.");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, intente nuevamente.");
+                    break;
+
+            }
+        }while (responseInt != 5);
     }
 
     //create a method to register a person
@@ -208,7 +220,6 @@ public class Main {
         String employeeName = in.nextLine();
         in.nextLine();
 
-
         System.out.println("Por favor, ingrese el apellido del empleado:");
         String employeeLastName = in.nextLine();
 
@@ -229,80 +240,188 @@ public class Main {
                         3. Recepcionista
                         """);
         int positionChoice = in.nextInt();
-        if (positionChoice == 1) {
+        in.nextLine();
 
-            System.out.println("Nombre del empleado: " + employeeName);
-            in.nextLine();
+        Employed newEmployed = null;
 
-            System.out.println("Apellido del empleado: " + employeeLastName);
-            in.nextLine();
+        switch (positionChoice){
+            case 1:
+                System.out.println("Por favor, ingrese el departamento del supervisor:");
+                String department = in.nextLine();
 
-            System.out.println("C.C del empleado: " + newEmployeeId);
-            in.nextLine();
+                System.out.println("Por favor, ingrese la ubicación de la oficina del supervisor:");
+                String officeLocation = in.nextLine();
 
-            System.out.println("Correo electrónico del empleado:" + employeeEmail);
-            in.nextLine(); // Consume the newline character
+                newEmployed = new Supervisor(employeeName, employeeLastName, newEmployeeId, employeeEmail, employeePhoneNumber, "Supervisor", "2023-10-01", 5000.00, department, officeLocation);
+                break;
+            case 2:
+                System.out.println("Por favor, ingrese el turno del cajero: ");
+                String cashierShift = in.nextLine();
 
-            System.out.println("Número de teléfono del empleado:" + employeePhoneNumber);
-            in.nextLine();
+                newEmployed = new Cashier(employeeName, employeeLastName, newEmployeeId, employeeEmail, employeePhoneNumber, "Cajero", "2023-10-01", 3000.00, "Sucursal Principal", cashierShift);
+                break;
 
-            System.out.println("por favor, ingrese la fecha de contratación del empleado (formato: dd/mm/yyyy):");
-            String hireDate = in.nextLine();
-            in.nextLine(); // Consume the newline character
+            case 3:
+                System.out.println("Por favor, ingrese el turno del recepcionista: ");
+                String shift = in.nextLine();
 
-            System.out.println("por favor, ingrese el salario del empleado:");
-            double salary = in.nextDouble();
+                System.out.println("Por favor, ingrese la sucursal asignada al recepcionista: ");
+                String assignedBranch = in.nextLine();
 
-            System.out.println("por favor, ingrese el departamento del empleado:");
-            in.nextLine(); // Consume the newline character
-            String department = in.nextLine();
+                newEmployed = new Receptionist(employeeName, employeeLastName, newEmployeeId, employeeEmail, employeePhoneNumber, "Recepcionista", "2023-10-01", 2500.00, assignedBranch, shift);
+                break;
 
-
-            //colocamos las variables de empleado a supervisor
-            String supervisorName = employeeName;
-            String supervisorLastName = employeeLastName;
-            Long supervisorId = newEmployeeId;
-            String supervisorEmail = employeeEmail;
-            int supervisorPhoneNumber = employeePhoneNumber.intValue();
-            String position = "Supervisor"; // Asignamos el cargo de Supervisor
-
-
-            // Creamos un objeto Supervisor con los datos del empleado
-            System.out.println("por favor, ingrese la ubicación de la oficina del empleado:");
-            String officeLocation = in.nextLine();
-            Supervisor supervisor = new Supervisor(
-                    supervisorName,
-                    supervisorLastName,
-                    supervisorId,
-                    supervisorEmail,
-                    supervisorPhoneNumber,
-                    position,
-                    hireDate,
-                    salary,
-                    department,
-                    officeLocation
-            );
-            System.out.println("¡Supervisor registrado exitosamente!");
-            System.out.println("Nombre: " + supervisor.getName());
-            System.out.println("Apellido: " + supervisor.getLastName());
-            System.out.println("ID: " + supervisor.getIdEmployed());
-            System.out.println("Correo electrónico: " + supervisor.getEmail());
-            System.out.println("Número de teléfono: " + supervisor.getPhoneNumber());
-            System.out.println("Cargo: " + supervisor.getPosition());
-            System.out.println("Fecha de contratación: " + supervisor.getHireDate());
-            System.out.println("Salario: " + supervisor.getSalary());
-
-
-        } else if (positionChoice == 2) {
-
-        } else if (positionChoice == 3) {
-
-        }else {
-            System.out.println("Opción no válida. Por favor, intente nuevamente.");
-            return;
+            default:
+                System.out.println("Opción no válida. Por favor, intente nuevamente.");
+                return;
         }
 
-        // Aquí podrías agregar lógica para guardar los datos del nuevo empleado
-        System.out.println("¡Empleado registrado exitosamente!");
+        registeredEmployed.add(newEmployed);
+        System.out.println("¡Empleado registrado con éxito!");
+        System.out.println("Nombre: " + newEmployed.getName());
+        System.out.println("Apellido: " + newEmployed.getLastName());
+        System.out.println("ID de empleado: " + newEmployed.getIdEmployed());
+        System.out.println("Correo electrónico: " + newEmployed.getEmail());
+        System.out.println("Número de teléfono: " + newEmployed.getPhoneNumber());
+        System.out.println("Cargo: " + newEmployed.getPosition());
+        System.out.println("Fecha de contratación: " + newEmployed.getHireDate());
+        System.out.println("Salario: " + newEmployed.getSalary());
+        System.out.println("Dias de Vacaciones al año: " + newEmployed.calculateVacationDays());
+    }
+
+    //create a method to display the employed menu
+    private static void employedMenu(Employed employed){
+        int option;
+
+        do {
+            System.out.println("*****************************************************");
+            System.out.println("\n--- Menú de Empleado para " + employed.getName() + " (" + employed.getPosition() + ") ---");
+            System.out.println("""
+                Opciones:
+                1. Ver información del empleado
+                2. Actualizar información de contacto
+                3. Calular días de vacaciones
+                4. Ver lista de clientes registrados
+                5. Cerrar sesión
+                    """);
+            System.out.println("Por favor, ingrese el número de la opción que desea seleccionar:");
+            option = in.nextInt();
+
+            switch (option){
+                case 1:
+                    displayEmployeeInfo(employed);
+                    break;
+                case 2:
+                    updateContactInfo(employed);
+                    break;
+
+                case 3:
+                    System.out.println("Tus días de vacaciones disponibles son: " + employed.calculateVacationDays() + " días.");
+                    break;
+
+                    case 4:
+                    displayRegisteredUsers();
+                    break;
+
+                case 5:
+                    System.out.println("Cerrando sesión...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, intente nuevamente.");
+            }
+        } while (option != 5);
+    }
+
+    //create a method to display employee information
+    private static void displayEmployeeInfo(Employed employed){
+        System.out.println("*****************************************************");
+        System.out.println("\n--- Información del Empleado ---");
+        System.out.println("Nombre: " + employed.getName());
+        System.out.println("Apellido: " + employed.getLastName());
+        System.out.println("ID de empleado: " + employed.getIdEmployed());
+        System.out.println("Correo electrónico: " + employed.getEmail());
+        System.out.println("Número de teléfono: " + employed.getPhoneNumber());
+        System.out.println("Cargo: " + employed.getPosition());
+        System.out.println("Fecha de contratación: " + employed.getHireDate());
+        System.out.println("Salario: " + String.format("%.2f", employed.getSalary()));
+        System.out.println("Días de vacaciones disponibles: " + employed.calculateVacationDays() + " días");
+
+        // use instanceof to check the type of employed
+        if (employed instanceof Supervisor){
+            Supervisor supervisor = (Supervisor) employed;
+            System.out.println("Departamento: " + supervisor.getDepartment());
+            System.out.println("Ubicación de la oficina: " + supervisor.getOfficeLocation());
+        } else if (employed instanceof Cashier) {
+            Cashier cashier = (Cashier) employed;
+            System.out.println("Sucursal asignada: " + cashier.getAssignedBranch());
+            System.out.println("Turno: " + cashier.getShift());
+        } else if (employed instanceof Receptionist) {
+            Receptionist receptionist = (Receptionist) employed;
+            System.out.println("Sucursal asignada: " + receptionist.getAssignedBranch());
+            System.out.println("Turno: " + receptionist.getShift());
+        }
+    }
+
+    //create a method to update contact information
+    private static void updateContactInfo(Employed employed) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("*****************************************************");
+        System.out.println("\n--- Actualizar Información de Contacto ---");
+        System.out.println("Por favor, ingrese el nuevo correo electrónico:");
+        String newEmail = in.nextLine();
+        in.nextLine();
+
+        System.out.println("Por favor, ingrese el nuevo número de teléfono:");
+        Long newPhoneNumber = in.nextLong();
+
+        employed.updateContacInformation(newEmail, newPhoneNumber);
+        System.out.println("Información de contacto actualizada con éxito.");
+
+        if (employed instanceof Cashier) {
+            System.out.println("Desdea actualizar su turno? (s/n)");
+            String updateShift = in.nextLine().toLowerCase();
+            if (updateShift == "n") {
+                System.out.println("No se ha actualizado el turno.");
+            } else if (updateShift == "s") {
+                System.out.println("Por favor, ingrese el nuevo turno:");
+                String newShift = in.nextLine();
+                ((Cashier) employed).setShift(newShift);
+                System.out.println("Turno actualizado con éxito.");
+            } else {
+                System.out.println("Opción no válida. No se ha actualizado el turno.");
+                employed.updateContacInformation(newEmail, newPhoneNumber);
+            }
+        }else {
+                employed.updateContacInformation(newEmail, newPhoneNumber);
+            }
+        System.out.println("Información de contacto actualizada con éxito.");
+    }
+
+    //create a method to display registered users
+    private static void displayRegisteredUsers(){
+        if (registeredUser.isEmpty()){
+            System.out.println("No hay usuarios registrados en el sistema.");
+            return;
+        }
+        System.out.println("*****************************************************");
+        System.out.println("\n--- Lista de Usuarios Registrados ---");
+        for (Person p : registeredUser) {
+            System.out.println("Nombre: " + p.getName());
+            System.out.println("Apellido: " + p.getLastName());
+            System.out.println("C.C: " + p.getIdUser());
+            System.out.println("Correo electrónico: " + p.getEmail());
+            System.out.println("Número de teléfono: " + p.getPhoneNumber());
+            System.out.println("Número de cuentas: " + p.getAccounts().size());
+            System.out.println("-----------------------------------");
+            if (!p.getAccounts().isEmpty()){
+                System.out.println("cuentas asociadas: ");
+                for (Account acc : p.getAccounts()){
+                    System.out.println("  - " + acc.getAccountNumber() + " (" + acc.getAccountType() + ") - Saldo:" + String.format("%.2f", acc.getBalance()));
+                }
+            } else {
+                System.out.println("No hay cuentas asociadas a este usuario.");
+            }
+            System.out.println("*****************************************************");
+        }
     }
 }
