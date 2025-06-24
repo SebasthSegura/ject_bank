@@ -109,4 +109,9 @@ public class Person {
                 + "Cuentas de Inversion = " + investmentAccounts + " "
                 + "Cuentas de Ahorro = " + savingAccounts;
     }
+
+    public void updateContacInformation(String newEmail, Long newPhoneNumber) {
+        this.email = newEmail;
+        this.phoneNumber = newPhoneNumber;
+    }
 }
